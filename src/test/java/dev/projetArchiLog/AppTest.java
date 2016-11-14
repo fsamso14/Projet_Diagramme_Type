@@ -1,4 +1,4 @@
-package fabian.projetArchiLog;
+package dev.projetArchiLog;
 
 import junit.framework.Test;
 import junit.framework.TestCase;

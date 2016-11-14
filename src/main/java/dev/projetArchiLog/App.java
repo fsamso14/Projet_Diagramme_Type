@@ -1,4 +1,4 @@
-package fabian.projetArchiLog;
+package dev.projetArchiLog;
 
 /**
  * Hello world!
