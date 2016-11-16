@@ -1,15 +1,19 @@
 package dev.projetArchiLog;
 
 import java.io.IOException;
+import java.util.ArrayList;
+
 import com.google.common.collect.ImmutableSet;
 import com.google.common.reflect.ClassPath;
+
 import dev.projetArchiLog.*;
+import dev.projetArchiLog.langage.Heritage;
 // TODO: Auto-generated Javadoc
 
 /**
  * The Class Interprétation.
  */
-public class Interprétation {
+public class Interpretation {
 	
 	 /**
  	 * Gets the nom classe.
@@ -29,13 +33,12 @@ public class Interprétation {
  	 * @param packages the packages
  	 * @return the listes classe
  	 */
- 	public static String getListesClasse(Package[] packages){
-		 String aRet="Liste des classes :\n";
+ 	public static ArrayList<Class<?>> getListesClasse(Package[] packages){
+		 ArrayList<Class<?>> aRet=new ArrayList<Class<?>>();
 		 ImmutableSet<ClassPath.ClassInfo> classes = null;
 		 ///*
 		 for(Package p:packages){
 			 String name = p.getName();
-			 aRet +="	Nom du Packages : "+name+"\n 		Nom des classes : \n";//*/
 			 try {
 				classes = ClassPath.from(ClassLoader.getSystemClassLoader()).getTopLevelClassesRecursive(name);
 			} catch (IOException e) {
@@ -43,8 +46,17 @@ public class Interprétation {
 				e.printStackTrace();
 			}
 			 for(ClassPath.ClassInfo c : classes){
-				 aRet +="		"+c.getName()+"\n";
+				 try {
+					aRet.add(Class.forName(c.getName()));
+				} catch (ClassNotFoundException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			 }
+			 
+		 }
+		 for(Class x: aRet){
+			 System.out.println(x.getName());
 		 }
 		 return aRet;
 	 }
@@ -55,7 +67,7 @@ public class Interprétation {
  	 * @param args the arguments
  	 */
  	public static void main(String[] args) {
-		System.out.println(getListesClasse(Package.getPackages()));
+		getListesClasse(Package.getPackages());
 	}
 	 
 }
