@@ -25,6 +25,16 @@
     	<artifactId>guava</artifactId>
     	<version>20.0</version>
     </dependency>
+    <dependency>
+    	<groupId>batik</groupId>
+    	<artifactId>batik-rasterizer</artifactId>
+    	<version>1.6</version>
+    </dependency>
+    <dependency>
+    	<groupId>org.apache.xmlgraphics</groupId>
+    	<artifactId>batik-svggen</artifactId>
+    	<version>1.8</version>
+    </dependency>
   </dependencies>
   <groupId>dev</groupId>
 </project>
