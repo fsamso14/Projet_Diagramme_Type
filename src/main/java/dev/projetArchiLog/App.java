@@ -10,7 +10,6 @@ public class App
 	
     public static void main( String[] args )
     {
-        System.out.println( "Hello World!" );
         try {
 			Class A = ClassLoader.getSystemClassLoader().loadClass("dev.projetArchiLog.langage.Classe");
 			System.out.println(A.getCanonicalName());

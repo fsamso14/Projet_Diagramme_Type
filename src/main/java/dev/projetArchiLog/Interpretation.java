@@ -7,8 +7,6 @@ import com.google.common.collect.ImmutableSet;
 import com.google.common.reflect.ClassPath;
 
 import dev.projetArchiLog.*;
-import dev.projetArchiLog.langage.Heritage;
-// TODO: Auto-generated Javadoc
 
 /**
  * The Class Interprétation.
@@ -40,16 +38,14 @@ public class Interpretation {
 		 for(Package p:packages){
 			 String name = p.getName();
 			 try {
-				classes = ClassPath.from(ClassLoader.getSystemClassLoader()).getTopLevelClassesRecursive(name);
+				classes = ClassPath.from(ClassLoader.getSystemClassLoader()).getTopLevelClasses(name);
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			 for(ClassPath.ClassInfo c : classes){
 				 try {
 					aRet.add(Class.forName(c.getName()));
 				} catch (ClassNotFoundException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 			 }
@@ -57,17 +53,20 @@ public class Interpretation {
 		 }
 		 for(Class x: aRet){
 			 System.out.println(x.getName());
+			 
 		 }
+		 
 		 return aRet;
 	 }
-	 
+ 	
  	/**
  	 * The main method.
  	 *
  	 * @param args the arguments
  	 */
  	public static void main(String[] args) {
-		getListesClasse(Package.getPackages());
+		ArrayList<Class<?>> list=getListesClasse(Package.getPackages());
+
 	}
 	 
 }

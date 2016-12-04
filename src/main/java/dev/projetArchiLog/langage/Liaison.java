@@ -1,12 +1,8 @@
 package dev.projetArchiLog.langage;
 
-public abstract class Liaison {
-	Classe from;
+public abstract class Liaison implements Modele{
 	Classe to;
 	
-	Classe getFrom() {
-		return from;
-	}
 	Classe getTo(){
 		return to;
 	}
