@@ -14,20 +14,27 @@ public class ClasseClassique extends ClasseConcrete {
 			int y) {
 		Class<?> c = this.getClasse();
 		  g2d.setPaint(Color.black);
-		    g2d.draw(new Rectangle(x,y,200,500));
+		  int size = this.getName().length();
 		    g2d.drawString(this.getName(), x+10, y+20);
-		    g2d.drawLine(x, y+25, x+200, y+25);
 		    int i=0;
 		    for(String attri : this.getAttributs()){
+		    	if(size < attri.length()){
+		    		size = attri.length();
+		    	}
 		    	i++;
-		    	g2d.drawString(attri, x+10, y+i*20);
+		    	g2d.drawString(attri, x+10, y+(i+1)*20);
 		    }
-		    g2d.drawLine(x, y+(i+1)*20+5, x+200, y+(i+1)*20+5);
+		    int j=i;
 		    for(String meth : this.getMethodes()){
+		    	if(size < meth.length()){
+		    		size = meth.length();
+		    	}
 		    	i++;
 		    	g2d.drawString(meth, x+10, y+(i+1)*20);
 		    }
-		// TODO Auto-generated method stub
+		    g2d.draw(new Rectangle(x,y,x+5*size+10,y+(i+1)*20+5));
+		    g2d.drawLine(x, y+25, x+5*size+20, y+25);
+		    g2d.drawLine(x, y+(j+1)*20+5, x+5*size+20, y+(j+1)*20+5);
 		return g2d;
 	}
 

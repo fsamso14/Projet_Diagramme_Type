@@ -39,7 +39,7 @@ public class TestSVGGen {
     // Ask the test to render into the SVG Graphics2D implementation.
     TestSVGGen test = new TestSVGGen();
     try {
-	Class c=Class.forName("dev.projetArchiLog.langage.Classe");
+	Class c=Class.forName("dev.projetArchiLog.langage.ClasseClassique");
 	ClasseClassique s = new ClasseClassique(c);
 	s.representation(svgGenerator, 10, 10);
 	} catch (ClassNotFoundException e) {
