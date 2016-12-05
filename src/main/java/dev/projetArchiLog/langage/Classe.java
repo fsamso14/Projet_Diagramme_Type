@@ -70,7 +70,7 @@ public abstract class Classe implements Modele{
 		return aret;
 	}
 	
-	public static Classe classeFactory(Class<?> c){
+	public static Classe classeFactory(Class<?> c,int x, int y){
 		Classe aRet;
 		if(c.isEnum()){
 			aRet = new Enum(c);
@@ -84,6 +84,9 @@ public abstract class Classe implements Modele{
 		else {
 			aRet = new ClasseClassique(c);
 		}
+		aRet.setX1(x);
+		aRet.setY1(y);
+		aRet.calculX2Y2();
 		return aRet;
 	}
 	
@@ -137,6 +140,25 @@ public abstract class Classe implements Modele{
 			}
 		}
 		return aRet;
+	}
+	public void calculX2Y2(){
+		int size = this.getName().length();
+	    int i=0;
+	    for(String attri : this.getAttributs()){
+	    	if(size < attri.length()){
+	    		size = attri.length();
+	    	}
+	    	i++;
+	    }
+	    int j=i;
+	    for(String meth : this.getMethodes()){
+	    	if(size < meth.length()){
+	    		size = meth.length();
+	    	}
+	    	i++;
+	    }
+	    this.setX2(x1+5*size+10);
+	    this.setY2(y1+(i+1)*20+5);
 	}
 	
 }

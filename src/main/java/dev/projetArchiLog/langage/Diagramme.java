@@ -20,17 +20,13 @@ public class Diagramme implements Modele {
 		this.tete=tete;
 		this.queue=queue;
 	}
+	public Diagramme(){}
 	public static Diagramme creerDiagramme(){
-		
+		return DiagrammeVide.getInstance();
 	}
-	public Diagramme add (String classPath){
-		try {
-			return new Diagramme(this,Classe.classeFactory(Class.forName(classPath)));
-		} catch (ClassNotFoundException e) {
-			System.out.println("Classe non trouvée : "+classPath);
-			e.printStackTrace();
-			return null;
-		}
+	public Diagramme add (String classPath,int x, int y) throws ClassNotFoundException{
+		Class<?> c = Class.forName(classPath);
+		return new Diagramme(this,Classe.classeFactory(c,x,y));
 	}
 	
 	public void init(){
