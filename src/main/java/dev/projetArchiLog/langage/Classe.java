@@ -3,9 +3,11 @@ package dev.projetArchiLog.langage;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
+import java.util.Set;
 
 public abstract class Classe implements Modele{
 	Class<?> c;
+	Set<Liaison> from;
 	int x1;
 	int y1;
 	int x2;
@@ -62,7 +64,7 @@ public abstract class Classe implements Modele{
 	}
 	
 	public String[] getMethodes(){
-		Method[] m = this.getClasse().getMethods();
+		Method[] m = this.getClasse().getDeclaredMethods();
 		String[] aret = new String[m.length];
 		for(int i = 0; i < m.length; i++){
 			aret[i] = traitementNomMeth(m[i].toString());

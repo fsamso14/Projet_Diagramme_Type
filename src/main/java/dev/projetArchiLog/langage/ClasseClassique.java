@@ -34,8 +34,7 @@ public class ClasseClassique extends ClasseConcrete {
 		    }
 		    g2d.drawLine(x, y+25, x+5*size+20, y+25);
 		    g2d.drawLine(x, y+(j+1)*20+5, x+5*size+20, y+(j+1)*20+5);
-		    g2d.setPaint(Color.green);
-		    g2d.draw(new Rectangle(x,y,x+5*size+10,y+(i+1)*20+5));
+		    g2d.draw(new Rectangle(x,y,10+5*size+10,10+(i+1)*20+5));
 		    
 		return g2d;
 	}

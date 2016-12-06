@@ -42,7 +42,7 @@ public class TestSVGGen {
 	Class c=Class.forName("dev.projetArchiLog.langage.ClasseClassique");
 	ClasseClassique s = new ClasseClassique(c);
 	
-	s.representation(svgGenerator, 500, 500);
+	s.representation(svgGenerator, 50,50);
 	} catch (ClassNotFoundException e) {
 		// TODO Auto-generated catch block
 		e.printStackTrace();
