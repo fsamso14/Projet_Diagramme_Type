@@ -44,7 +44,7 @@ public class Heritage extends Liaison{
 				g2d.drawLine(x, y,to.getX2(), to.getY2());
 			}
 		}
-		return null;
+		return g2d;
 	}
 
 

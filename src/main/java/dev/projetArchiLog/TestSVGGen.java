@@ -12,7 +12,9 @@ import org.apache.batik.svggen.SVGGraphics2D;
 import org.w3c.dom.Document;
 import org.w3c.dom.DOMImplementation;
 
+import dev.projetArchiLog.langage.Classe;
 import dev.projetArchiLog.langage.ClasseClassique;
+import dev.projetArchiLog.langage.Heritage;
 
 public class TestSVGGen {
 
@@ -40,9 +42,12 @@ public class TestSVGGen {
     TestSVGGen test = new TestSVGGen();
     try {
 	Class c=Class.forName("dev.projetArchiLog.langage.ClasseClassique");
-	ClasseClassique s = new ClasseClassique(c);
-	
-	s.representation(svgGenerator, 50,50);
+	Classe s = Classe.classeFactory(c, 20, 20);
+	Classe t = Classe.classeFactory(c, 500, 200);
+	Heritage from = new Heritage(s,t);
+	s.representation(svgGenerator, s.getX1(),s.getY1());
+	from.representation(svgGenerator, s.getX1(), s.getY1());
+	t.representation(svgGenerator, t.getX1(),t.getY1());
 	} catch (ClassNotFoundException e) {
 		// TODO Auto-generated catch block
 		e.printStackTrace();
