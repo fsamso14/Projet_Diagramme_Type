@@ -6,14 +6,14 @@ import java.awt.Rectangle;
 
 import org.apache.batik.svggen.SVGGraphics2D;
 
+import dev.projetArchiLog.visiteur.IVisiteur;
+
 public class Interface extends Classe{
 	public Interface(Class<?> c){
 		this.c=c;
-	}
-	public Graphics2D representation(SVGGraphics2D g2d, int x, int y) {
-		return g2d;
-		// TODO Auto-generated method stub
-		
+	}	
+	public void accepter(IVisiteur visiteur) {
+		visiteur.visiter(this);	
 	}
 
 }

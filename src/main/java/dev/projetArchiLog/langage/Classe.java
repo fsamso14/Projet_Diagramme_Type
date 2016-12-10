@@ -5,7 +5,9 @@ import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
 import java.util.Set;
 
-public abstract class Classe implements Modele{
+import dev.projetArchiLog.visiteur.IVisitable;
+
+public abstract class Classe implements IVisitable{
 	Class<?> c;
 	Set<Liaison> from;
 	int x1;
@@ -75,7 +77,7 @@ public abstract class Classe implements Modele{
 	public static Classe classeFactory(Class<?> c,int x, int y){
 		Classe aRet;
 		if(c.isEnum()){
-			aRet = new Enum(c);
+			aRet = new TypeEnumere(c);
 		}
 		else if(c.isInterface()){
 			aRet = new Interface(c);

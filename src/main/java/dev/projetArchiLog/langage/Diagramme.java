@@ -11,7 +11,10 @@ import org.apache.batik.svggen.SVGGraphics2DIOException;
 import org.w3c.dom.DOMImplementation;
 import org.w3c.dom.Document;
 
-public class Diagramme implements Modele {
+import dev.projetArchiLog.visiteur.IVisitable;
+import dev.projetArchiLog.visiteur.IVisiteur;
+
+public class Diagramme implements IVisitable {
 	public Classe tete;
 	public Diagramme queue;
 	public static SVGGraphics2D svgGenerator;
@@ -58,9 +61,9 @@ public class Diagramme implements Modele {
 			e.printStackTrace();
 		}
 	}
-	public Graphics2D representation(SVGGraphics2D svgGenerator, int x, int y) {
+	public void accepter(IVisiteur visiteur) {
 		// TODO Auto-generated method stub
-		return null;
+		
 	}
 
 }

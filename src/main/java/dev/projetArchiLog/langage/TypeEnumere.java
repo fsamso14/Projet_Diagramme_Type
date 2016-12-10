@@ -1,23 +1,14 @@
 package dev.projetArchiLog.langage;
 
-import java.awt.Color;
 import java.awt.Graphics2D;
 
 import org.apache.batik.svggen.SVGGraphics2D;
 
 import dev.projetArchiLog.visiteur.IVisiteur;
 
-public class Heritage extends Liaison{
-	
-	public Classe from;
-	public Classe to;
-	int x;
-	int y;
-	public Heritage(Classe from,Classe to){
-		this.from=from;
-		this.to=to;
-		x=from.getX1();
-		y=from.getY1();
+public class TypeEnumere extends Classe{
+	public TypeEnumere(Class<?> c){
+		this.c=c;
 	}
 	
 	public void accepter(IVisiteur visiteur) {
