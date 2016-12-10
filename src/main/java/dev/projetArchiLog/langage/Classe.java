@@ -159,8 +159,8 @@ public abstract class Classe implements Modele{
 	    	}
 	    	i++;
 	    }
-	    this.setX2(x1+5*size+10);
-	    this.setY2(y1+(i+1)*20+5);
+	    this.setX2(x1+5*size+20);
+	    this.setY2(y1+(i+1)*20+15);
 	}
 	
 }
