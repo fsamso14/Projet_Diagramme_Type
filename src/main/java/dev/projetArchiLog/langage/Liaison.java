@@ -1,6 +1,8 @@
 package dev.projetArchiLog.langage;
 
-public abstract class Liaison implements Modele{
+import dev.projetArchiLog.visiteur.IVisitable;
+
+public abstract class Liaison implements IVisitable{
 	Classe to;
 	
 	Classe getTo(){
