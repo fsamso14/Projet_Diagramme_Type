@@ -3,7 +3,9 @@ Un langage embarqué JAVA pour dessiner des diagrammes de types
 
 # Auteurs
 Matyas Amrouche
-Matthieur Posmyk
+
+Matthieu Posmyk
+
 Fabian Samson
 
 # Install
