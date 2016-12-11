@@ -8,7 +8,7 @@ Matthieu Posmyk
 
 Fabian Samson
 
-# Install
+# Installation
 
 # Bugs
 
