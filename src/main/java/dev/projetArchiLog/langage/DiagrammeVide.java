@@ -21,4 +21,16 @@ public class DiagrammeVide implements IVisitable, IDiagramme{
 		IDiagramme d = Diagramme.creerDiagramme(this,c);
 		return ((Diagramme)d.add(c));
 	}
+	public Classe getTete() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	public IDiagramme getQueue() {
+		// TODO Auto-generated method stub
+		return this;
+	}
+	public void checkLiaisons(IDiagramme diag, Classe nouvelle) {
+		// TODO Auto-generated method stub
+		
+	}
 }

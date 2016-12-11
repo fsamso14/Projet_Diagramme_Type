@@ -130,6 +130,9 @@ public class VisiterSVG implements IVisiteur{
 		
 	}
 	public void visiter(DiagrammeVide o){
+		for(Liaison l : Diagramme.liaisons){
+			l.accepter(this);
+		}
 		boolean useCSS = true; // we want to use CSS style attributes
 	    Writer out;
 		try {
@@ -147,9 +150,10 @@ public class VisiterSVG implements IVisiteur{
 	}
 
 	public void visiter(Diagramme o) {
+		o.checkLiaisons(o.getQueue(), o.getTete());
 		o.getTete().accepter(this);
 		//this.visiter(o.getTete());
-			o.getQueue().accepter(this);
+		o.getQueue().accepter(this);
 		//this.visiter(o.getQueue());
 	}
 

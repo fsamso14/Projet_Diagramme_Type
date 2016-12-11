@@ -4,6 +4,7 @@ import java.awt.Graphics2D;
 import java.io.OutputStreamWriter;
 import java.io.UnsupportedEncodingException;
 import java.io.Writer;
+import java.util.ArrayList;
 
 import org.apache.batik.dom.GenericDOMImplementation;
 import org.apache.batik.svggen.SVGGraphics2D;
@@ -17,6 +18,7 @@ import dev.projetArchiLog.visiteur.IVisiteur;
 public class Diagramme implements IVisitable,IDiagramme {
 	public Classe tete;
 	public IDiagramme queue;
+	public static ArrayList<Liaison> liaisons;
 	
 	private Diagramme(IDiagramme queue, Classe tete){
 		this.tete=tete;
@@ -25,6 +27,7 @@ public class Diagramme implements IVisitable,IDiagramme {
 	public Diagramme(){
 	}
 	public static IDiagramme creerDiagramme(){
+		liaisons = new ArrayList<Liaison>();
 		return DiagrammeVide.getInstance();
 	}
 	public Diagramme add (Classe c) {
@@ -51,8 +54,19 @@ public class Diagramme implements IVisitable,IDiagramme {
 	}
 	public void accepter(IVisiteur visiteur) {
 		visiteur.visiter(this);
-		// TODO Auto-generated method stub
-		
+		// TODO Auto-generated method stub	
 	}
-
+	public void checkLiaisons(IDiagramme idiag,Classe nouvelle){
+		for(Liaison l : nouvelle.getLiaisons()){
+			if(l.getTo()==this.getTete()){
+				liaisons.add(l);
+			}
+		}
+		for(Liaison l : this.getTete().getLiaisons()){
+			if(l.getTo()==nouvelle){
+				liaisons.add(l);
+			}
+		}
+		this.checkLiaisons(this.getQueue(), nouvelle);
+	}
 }

@@ -3,6 +3,7 @@ package dev.projetArchiLog.langage;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
+import java.util.ArrayList;
 import java.util.Set;
 
 import dev.projetArchiLog.visiteur.IVisitable;
@@ -14,6 +15,7 @@ public abstract class Classe implements IVisitable{
 	public int y1;
 	public int x2;
 	public int y2;
+	public ArrayList<Liaison> liaisons;
 	
 	public int getX1() {
 		return x1;
@@ -91,6 +93,7 @@ public abstract class Classe implements IVisitable{
 		aRet.setX1(x);
 		aRet.setY1(y);
 		aRet.calculX2Y2();
+		aRet.setLiaisons(new ArrayList<Liaison>());
 		return aRet;
 	}
 	
@@ -163,6 +166,14 @@ public abstract class Classe implements IVisitable{
 	    }
 	    this.setX2(x1+5*size+10);
 	    this.setY2(y1+(i+1)*20+5);
+	}
+
+	public ArrayList<Liaison> getLiaisons() {
+		return liaisons;
+	}
+
+	public void setLiaisons(ArrayList<Liaison> liaisons) {
+		this.liaisons = liaisons;
 	}
 	
 }
