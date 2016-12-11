@@ -15,6 +15,7 @@ import org.w3c.dom.Document;
 import dev.projetArchiLog.langage.ClasseAbstraite;
 import dev.projetArchiLog.langage.ClasseClassique;
 import dev.projetArchiLog.langage.Delegation;
+import dev.projetArchiLog.langage.DessinerFleche;
 import dev.projetArchiLog.langage.Diagramme;
 import dev.projetArchiLog.langage.DiagrammeVide;
 import dev.projetArchiLog.langage.Heritage;
@@ -154,14 +155,46 @@ public class VisiterSVG implements IVisiteur{
 	}
 
 	public void visiter(Heritage o) {
-		// TODO Auto-generated method stub
+		svgGenerator.setPaint(Color.black);
+		DessinerFleche d = new DessinerFleche();
+
+		int X = o.to.getX1()+(o.to.getX2()-o.to.getX1())/2;
+		int Y = o.to.getY1()+(o.to.getY2()-o.to.getY1())/2;
+		
+
+		if(X-o.from.getX1()>=0){
+			if(Y-o.from.getY1()>=0){
+				//relier à x1,y1
+				
+				d.drawArrow(svgGenerator,o.from.getX2(), o.from.getY1(), o.to.getX1(),o.to.getY1());
+
+			}
+			else{
+				// relier à x1,y2
+				
+				d.drawArrow(svgGenerator,o.from.getX1(), o.from.getY1(), o.to.getX1(),o.to.getY2());
+			}
+		}
+		else{
+			if(Y-o.from.getY1()>=0){
+				//relier à x2,y1
+				
+				d.drawArrow(svgGenerator,o.from.getX2(), o.from.getY2(), o.to.getX2(), o.to.getY1());
+			}
+			else{
+				// relier à x2,y2
+				//ssvgGenerator.drawLine(o.from.getX2(), o.from.getY1(), o.to.getX2(), o.to.getY2());
+				d.drawArrow(svgGenerator,o.from.getX2(), o.from.getY1(), o.to.getX2(), o.to.getY2());
+			}
+		}
+		
 		
 	}
 
 	public void visiter(Interface o) {
 		svgGenerator.setPaint(new Color(38,196,236));
 	    svgGenerator.fill(new Rectangle(o.getX1(),o.getY1(),o.getX2()-o.getX1(),o.getY2()-o.getY1()));
-		  svgGenerator.setPaint(Color.black);
+		  svgGenerator.setPaint(Color.blue);
 		  int size = o.getName().length();
 		    svgGenerator.drawString("<<Abstract>>  "+o.getName(), o.getX1()+10, o.getY1()+20);
 		    int i=0;
@@ -189,11 +222,74 @@ public class VisiterSVG implements IVisiteur{
 
 	public void visiter(Delegation o) {
 		// TODO Auto-generated method stub
+		svgGenerator.setPaint(Color.green);
+		DessinerFleche d = new DessinerFleche();
+
+		int X = o.to.getX1()+(o.to.getX2()-o.to.getX1())/2;
+		int Y = o.to.getY1()+(o.to.getY2()-o.to.getY1())/2;
 		
+
+		if(X-o.from.getX1()>=0){
+			if(Y-o.from.getY1()>=0){
+				//relier à x1,y1
+				//svgGenerator.drawLine(o.from.getX2(), o.from.getY1(), o.to.getX1(),o.to.getY1());
+				d.drawArrow(svgGenerator,o.from.getX2(), o.from.getY1(), o.to.getX1(),o.to.getY1());
+
+			}
+			else{
+				// relier à x1,y2
+				//svgGenerator.drawLine(o.from.getX1(), o.from.getY1(), o.to.getX1(),o.to.getY2());
+				d.drawArrow(svgGenerator,o.from.getX1(), o.from.getY1(), o.to.getX1(),o.to.getY2());
+			}
+		}
+		else{
+			if(Y-o.from.getY1()>=0){
+				//relier à x2,y1
+				//svgGenerator.drawLine(o.from.getX2(), o.from.getY2(), o.to.getX2(), o.to.getY1());
+				d.drawArrow(svgGenerator,o.from.getX2(), o.from.getY2(), o.to.getX2(), o.to.getY1());
+			}
+			else{
+				// relier à x2,y2
+				//ssvgGenerator.drawLine(o.from.getX2(), o.from.getY1(), o.to.getX2(), o.to.getY2());
+				d.drawArrow(svgGenerator,o.from.getX2(), o.from.getY1(), o.to.getX2(), o.to.getY2());
+			}
+		}
 	}
 
 	public void visiter(Implementation o) {
-		// TODO Auto-generated method stub
+		svgGenerator.setPaint(Color.blue);
+		DessinerFleche d = new DessinerFleche();
+
+		int X = o.to.getX1()+(o.to.getX2()-o.to.getX1())/2;
+		int Y = o.to.getY1()+(o.to.getY2()-o.to.getY1())/2;
+		
+
+		if(X-o.from.getX1()>=0){
+			if(Y-o.from.getY1()>=0){
+				//relier à x1,y1
+				//svgGenerator.drawLine(o.from.getX2(), o.from.getY1(), o.to.getX1(),o.to.getY1());
+				d.drawArrow(svgGenerator,o.from.getX2(), o.from.getY1(), o.to.getX1(),o.to.getY1());
+				
+
+			}
+			else{
+				// relier à x1,y2
+				//svgGenerator.drawLine(o.from.getX1(), o.from.getY1(), o.to.getX1(),o.to.getY2());
+				d.drawArrow(svgGenerator,o.from.getX1(), o.from.getY1(), o.to.getX1(),o.to.getY2());
+			}
+		}
+		else{
+			if(Y-o.from.getY1()>=0){
+				//relier à x2,y1
+				//svgGenerator.drawLine(o.from.getX2(), o.from.getY2(), o.to.getX2(), o.to.getY1());
+				d.drawArrow(svgGenerator,o.from.getX2(), o.from.getY2(), o.to.getX2(), o.to.getY1());
+			}
+			else{
+				// relier à x2,y2
+				//ssvgGenerator.drawLine(o.from.getX2(), o.from.getY1(), o.to.getX2(), o.to.getY2());
+				d.drawArrow(svgGenerator,o.from.getX2(), o.from.getY1(), o.to.getX2(), o.to.getY2());
+			}
+		}
 		
 	}
 }
