@@ -13,8 +13,9 @@ Fabian Samson
 
 1) Projet Maven a importé sous Eclipse
 
-2)
+2) La classe utile à la création d'un document SVG est la classe Main, la classe est commentée ainsi l'utilisateur n'a plus quà suivre les consignes. Les instances déjà en place servent d'exemple à l'utilisateur quant à la nomenclature à utiliser afin de générer le diagramme type voulu. 
 
 # Bugs
 
+Il se peut que dans certains rares cas les liaisons entre les différents types ne soient pas dessinées avec une précision optimale
 
