@@ -16,8 +16,8 @@ public class Heritage extends Liaison{
 	public Heritage(Classe from,Classe to){
 		this.from=from;
 		this.to=to;
-		x=from.getX1();
-		y=from.getY1();
+		this.x=from.getX1();
+		this.y=from.getY1();
 	}
 	
 	public void accepter(IVisiteur visiteur) {
