@@ -4,13 +4,21 @@ import java.awt.Graphics2D;
 
 import org.apache.batik.svggen.SVGGraphics2D;
 
-public class DiagrammeVide extends Diagramme{
+import dev.projetArchiLog.visiteur.IVisitable;
+import dev.projetArchiLog.visiteur.IVisiteur;
+
+public class DiagrammeVide implements IVisitable, IDiagramme{
 	private final static DiagrammeVide instance = new DiagrammeVide(); 
 	public final static DiagrammeVide getInstance(){
 		return instance; 
 	}
 	private DiagrammeVide(){}
-	public Graphics2D representation(SVGGraphics2D svgGenerator, int x, int y){
-		return svgGenerator;
+	public void accepter(IVisiteur visiteur) {
+		visiteur.visiter(this);
+		
+	}
+	public IDiagramme add(Classe c) {
+		IDiagramme d = Diagramme.creerDiagramme(this,c);
+		return ((Diagramme)d.add(c));
 	}
 }

@@ -14,54 +14,43 @@ import org.w3c.dom.Document;
 import dev.projetArchiLog.visiteur.IVisitable;
 import dev.projetArchiLog.visiteur.IVisiteur;
 
-public class Diagramme implements IVisitable {
+public class Diagramme implements IVisitable,IDiagramme {
 	public Classe tete;
-	public Diagramme queue;
-	public static SVGGraphics2D svgGenerator;
+	public IDiagramme queue;
 	
-	private Diagramme(Diagramme queue, Classe tete){
+	private Diagramme(IDiagramme queue, Classe tete){
 		this.tete=tete;
 		this.queue=queue;
 	}
-	public Diagramme(){}
-	public static Diagramme creerDiagramme(){
+	public Diagramme(){
+	}
+	public static IDiagramme creerDiagramme(){
 		return DiagrammeVide.getInstance();
 	}
-	public Diagramme add (String classPath,int x, int y) throws ClassNotFoundException{
-		Class<?> c = Class.forName(classPath);
-		return new Diagramme(this,Classe.classeFactory(c,x,y));
+	public Diagramme add (Classe c) {
+		return new Diagramme(this,c);
+	}
+	public static IDiagramme creerDiagramme(IDiagramme queue, Classe tete){
+		return new Diagramme(queue,tete);
 	}
 	
-	public void init(){
-		 // Get a DOMImplementation.
-	    DOMImplementation domImpl =
-	      GenericDOMImplementation.getDOMImplementation();
-
-	    // Create an instance of org.w3c.dom.Document.
-	    String svgNS = "http://www.w3.org/2000/svg";
-	    Document document = domImpl.createDocument(svgNS, "svg", null);
-
-	    // Create an instance of the SVG Generator.
-	    svgGenerator = new SVGGraphics2D(document);
-	    		
+	public Classe getTete() throws NullPointerException{
+			return tete;
+	}
+	public void setTete(Classe tete) {
+		this.tete = tete;
+	}
+	public IDiagramme getQueue() {
+		return queue;
+	}
+	public void setQueue(IDiagramme queue) {
+		this.queue = queue;
 	}
 	public void draw(){
-		boolean useCSS = true; // we want to use CSS style attributes
-	    Writer out;
-		try {
-			out = new OutputStreamWriter(System.out, "UTF-8");
-			try {
-				svgGenerator.stream(out, useCSS);
-			} catch (SVGGraphics2DIOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		} catch (UnsupportedEncodingException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		
 	}
 	public void accepter(IVisiteur visiteur) {
+		visiteur.visiter(this);
 		// TODO Auto-generated method stub
 		
 	}

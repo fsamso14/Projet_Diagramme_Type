@@ -10,10 +10,10 @@ import dev.projetArchiLog.visiteur.IVisitable;
 public abstract class Classe implements IVisitable{
 	Class<?> c;
 	Set<Liaison> from;
-	int x1;
-	int y1;
-	int x2;
-	int y2;
+	public int x1;
+	public int y1;
+	public int x2;
+	public int y2;
 	
 	public int getX1() {
 		return x1;
@@ -161,8 +161,8 @@ public abstract class Classe implements IVisitable{
 	    	}
 	    	i++;
 	    }
-	    this.setX2(x1+5*size+20);
-	    this.setY2(y1+(i+1)*20+15);
+	    this.setX2(x1+5*size+10);
+	    this.setY2(y1+(i+1)*20+5);
 	}
 	
 }
