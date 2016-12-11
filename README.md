@@ -14,6 +14,7 @@ Les liaisons qui existent entre les différentes classes ou interfaces sont repr
 
 # Utilisation
 1)Projet Maven a importé sous Eclipse
+
 2)La classe utile à la création d'un document SVG est la classe Main. La classe est commentée, ainsi l'utilisateur n'a plus quà suivre les consignes. De plus, des instances déjà en places servent d'exemple à l'utilisateur quant à la nomenclature à utiliser afin de générer le diagramme type voulu. 
 
 # Interprétation
