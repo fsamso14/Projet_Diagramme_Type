@@ -47,9 +47,7 @@ public class VisiterSVG implements IVisiteur{
 	}
 	
 	public void visiter(ClasseClassique o) {
-		
-		Class<?> c = o.getClasse();
-	    svgGenerator.setPaint(new Color(255,228,196));
+		svgGenerator.setPaint(new Color(255,228,196));
 	    svgGenerator.fill(new Rectangle(o.getX1(),o.getY1(),o.getX2()-o.getX1(),o.getY2()-o.getY1()));
 		  svgGenerator.setPaint(Color.black);
 		  int size = o.getName().length();
@@ -76,12 +74,59 @@ public class VisiterSVG implements IVisiteur{
 	}
 
 	public void visiter(ClasseAbstraite o) {
-		// TODO Auto-generated method stub
+		svgGenerator.setPaint(new Color(130,196,108));
+	    svgGenerator.fill(new Rectangle(o.getX1(),o.getY1(),o.getX2()-o.getX1(),o.getY2()-o.getY1()));
+		  svgGenerator.setPaint(Color.black);
+		  int size = o.getName().length();
+		    svgGenerator.drawString("<<Abstract>>  "+o.getName(), o.getX1()+10, o.getY1()+20);
+		    int i=0;
+		    for(String attri : o.getAttributs()){
+		    	if(size < attri.length()){
+		    		size = attri.length();
+		    	}
+		    	i++;
+		    	svgGenerator.drawString(attri, o.getX1()+10, o.getY1()+(i+1)*20);
+		    }
+		    int j=i;
+		    for(String meth : o.getMethodes()){
+		    	if(size < meth.length()){
+		    		size = meth.length();
+		    	}
+		    	i++;
+		    	svgGenerator.drawString(meth, o.getX1()+10, o.getY1()+(i+1)*20);
+		    }
+		    svgGenerator.draw(new Rectangle(o.getX1(),o.getY1(),o.getX2()-o.getX1(),o.getY2()-o.getY1()));
+		    svgGenerator.drawLine(o.getX1(), o.getY1()+25, o.getX1()+5*size+10, o.getY1()+25);
+		    svgGenerator.drawLine(o.getX1(), o.getY1()+(j+1)*20+5, o.getX1()+5*size+10, o.getY1()+(j+1)*20+5);		
 		
 	}
 
 	public void visiter(TypeEnumere o) {
-		// TODO Auto-generated method stub
+		svgGenerator.setPaint(new Color(112,53,22));
+	    svgGenerator.fill(new Rectangle(o.getX1(),o.getY1(),o.getX2()-o.getX1(),o.getY2()-o.getY1()));
+		  svgGenerator.setPaint(Color.black);
+		  int size = o.getName().length();
+		    svgGenerator.drawString("<<Enum>>  "+o.getName(), o.getX1()+10, o.getY1()+20);
+		    int i=0;
+		    for(String attri : o.getAttributs()){
+		    	if(size < attri.length()){
+		    		size = attri.length();
+		    	}
+		    	i++;
+		    	svgGenerator.drawString(attri, o.getX1()+10, o.getY1()+(i+1)*20);
+		    }
+		    int j=i;
+		    for(String meth : o.getMethodes()){
+		    	if(size < meth.length()){
+		    		size = meth.length();
+		    	}
+		    	i++;
+		    	svgGenerator.drawString(meth, o.getX1()+10, o.getY1()+(i+1)*20);
+		    }
+		    svgGenerator.draw(new Rectangle(o.getX1(),o.getY1(),o.getX2()-o.getX1(),o.getY2()-o.getY1()));
+		    svgGenerator.drawLine(o.getX1(), o.getY1()+25, o.getX1()+5*size+10, o.getY1()+25);
+		    svgGenerator.drawLine(o.getX1(), o.getY1()+(j+1)*20+5, o.getX1()+5*size+10, o.getY1()+(j+1)*20+5);		
+		
 		
 	}
 	public void visiter(DiagrammeVide o){
@@ -114,7 +159,31 @@ public class VisiterSVG implements IVisiteur{
 	}
 
 	public void visiter(Interface o) {
-		// TODO Auto-generated method stub
+		svgGenerator.setPaint(new Color(38,196,236));
+	    svgGenerator.fill(new Rectangle(o.getX1(),o.getY1(),o.getX2()-o.getX1(),o.getY2()-o.getY1()));
+		  svgGenerator.setPaint(Color.black);
+		  int size = o.getName().length();
+		    svgGenerator.drawString("<<Abstract>>  "+o.getName(), o.getX1()+10, o.getY1()+20);
+		    int i=0;
+		    for(String attri : o.getAttributs()){
+		    	if(size < attri.length()){
+		    		size = attri.length();
+		    	}
+		    	i++;
+		    	svgGenerator.drawString(attri, o.getX1()+10, o.getY1()+(i+1)*20);
+		    }
+		    int j=i;
+		    for(String meth : o.getMethodes()){
+		    	if(size < meth.length()){
+		    		size = meth.length();
+		    	}
+		    	i++;
+		    	svgGenerator.drawString(meth, o.getX1()+10, o.getY1()+(i+1)*20);
+		    }
+		    svgGenerator.draw(new Rectangle(o.getX1(),o.getY1(),o.getX2()-o.getX1(),o.getY2()-o.getY1()));
+		    svgGenerator.drawLine(o.getX1(), o.getY1()+25, o.getX1()+5*size+10, o.getY1()+25);
+		    svgGenerator.drawLine(o.getX1(), o.getY1()+(j+1)*20+5, o.getX1()+5*size+10, o.getY1()+(j+1)*20+5);		
+		
 		
 	}
 
@@ -127,10 +196,4 @@ public class VisiterSVG implements IVisiteur{
 		// TODO Auto-generated method stub
 		
 	}
-
-	public void visiter(Liaison o) {
-		// TODO Auto-generated method stub
-		
-	}
-
 }

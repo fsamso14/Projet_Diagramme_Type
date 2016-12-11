@@ -11,7 +11,5 @@ public interface IVisiteur {
 	void visiter(Heritage o);
 	void visiter(Interface o);
 	void visiter(Delegation o);
-	void visiter(Implementation o);
-	void visiter(Liaison o);
-	
+	void visiter(Implementation o);	
 }
