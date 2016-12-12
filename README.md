@@ -7,9 +7,11 @@ Matyas Amrouche / Matthieu Posmyk / Fabian Samson
 
 # Représentation des éléments du diagramme
 1) Classes et interfaces
+
 Les classes et interfaces sont représentées par des rectangles de couleurs : classe en jaune, classe abstraite en vert, interface en bleu.
 
 2) Liaisons
+
 Les liaisons qui existent entre les différentes classes ou interfaces sont représentées par des flèches de couleurs qui pointent vers l'élément dont elles héritent, implémentent ou délèguent les propriétés, ainsi l'héritage est représenté par une flèche noire, l'implémentation en bleu et la déléguation en vert.
 
 # Utilisation
