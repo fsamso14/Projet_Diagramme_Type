@@ -4,6 +4,7 @@ import java.awt.Graphics2D;
 import java.io.OutputStreamWriter;
 import java.io.UnsupportedEncodingException;
 import java.io.Writer;
+import java.lang.reflect.Field;
 import java.util.ArrayList;
 
 import org.apache.batik.dom.GenericDOMImplementation;
@@ -57,16 +58,34 @@ public class Diagramme implements IVisitable,IDiagramme {
 		// TODO Auto-generated method stub	
 	}
 	public void checkLiaisons(IDiagramme idiag,Classe nouvelle){
-		for(Liaison l : nouvelle.getLiaisons()){
-			if(l.getTo()==this.getTete()){
-				liaisons.add(l);
+		
+		for(Class<?> c : nouvelle.getClasse().getInterfaces()){
+			if(c==this.getTete().getClasse()){
+				liaisons.add(Liaison.liaisonFactory(nouvelle, idiag.getTete()));
 			}
 		}
-		for(Liaison l : this.getTete().getLiaisons()){
-			if(l.getTo()==nouvelle){
-				liaisons.add(l);
+		if( nouvelle.getClasse().getSuperclass() == idiag.getTete().getClasse()){
+			liaisons.add(Liaison.liaisonFactory(nouvelle,idiag.getTete()));
+			//liaisons.add(Liaison.liaisonFactory(idiag.getTete(),nouvelle));
+		}
+		if(idiag.getTete().getClasse().getSuperclass() == nouvelle.getClasse()){
+			liaisons.add(Liaison.liaisonFactory(idiag.getTete(),nouvelle));
+		}
+		for(Class<?> c : idiag.getTete().getClasse().getInterfaces()){
+			if(c==nouvelle.getClasse()){
+				liaisons.add(Liaison.liaisonFactory(idiag.getTete(),nouvelle));
 			}
 		}
-		this.checkLiaisons(this.getQueue(), nouvelle);
+		for(Field f : nouvelle.getClasse().getFields()){
+			if(f.getType() == this.getTete().getClasse()){
+				liaisons.add(Liaison.liaisonFactory(idiag.getTete(),nouvelle));
+			}
+		}
+		for(Field f : idiag.getTete().getClasse().getFields()){
+			if(f.getType() == nouvelle.getClasse()){
+				liaisons.add(Liaison.liaisonFactory(nouvelle, idiag.getTete()));
+			}
+		}
+		idiag.getQueue().checkLiaisons(idiag.getQueue(), nouvelle);
 	}
 }

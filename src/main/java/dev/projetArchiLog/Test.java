@@ -24,19 +24,11 @@ public class Test {
 		Classe d4 = Classe.classeFactory(c4,300,20);
 		Classe d5 = Classe.classeFactory(c5, 300, 540);
 		Classe d6= Classe.classeFactory(c6,1000, 300);
-		//Heritage h1= new Heritage(d2,d1);
-		//Heritage h2= new Heritage(d2,d3);
-		
-		Liaison l = Liaison.liaisonFactory(c2, c6,d2,d6);
-		
 		d = d.add(d1);
 		d = d.add(d2);
 		d = d.add(d3);
 		d = d.add(d4);
 		d = d.add(d6);
-		l.accepter(visiteur);
-		//h1.accepter(visiteur);
-		//h2.accepter(visiteur);*/
 	} catch (ClassNotFoundException e) {
 		// TODO Auto-generated catch block
 		e.printStackTrace();

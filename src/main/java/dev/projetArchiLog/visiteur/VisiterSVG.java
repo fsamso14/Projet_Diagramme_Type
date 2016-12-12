@@ -151,7 +151,7 @@ public class VisiterSVG implements IVisiteur{
 	}
 
 	public void visiter(Diagramme o) {
-		o.checkLiaisons(o.getQueue(), o.getTete());
+		o.getQueue().checkLiaisons(o.getQueue(), o.getTete());
 		o.getTete().accepter(this);
 		//this.visiter(o.getTete());
 		o.getQueue().accepter(this);
@@ -200,7 +200,7 @@ public class VisiterSVG implements IVisiteur{
 	    svgGenerator.fill(new Rectangle(o.getX1(),o.getY1(),o.getX2()-o.getX1(),o.getY2()-o.getY1()));
 		  svgGenerator.setPaint(Color.blue);
 		  int size = o.getName().length();
-		    svgGenerator.drawString("<<Abstract>>  "+o.getName(), o.getX1()+10, o.getY1()+20);
+		    svgGenerator.drawString("<<Interface>>  "+o.getName(), o.getX1()+10, o.getY1()+20);
 		    int i=0;
 		    for(String attri : o.getAttributs()){
 		    	if(size < attri.length()){

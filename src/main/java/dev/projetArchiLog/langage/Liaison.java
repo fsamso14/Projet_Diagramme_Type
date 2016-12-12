@@ -28,20 +28,19 @@ public abstract class Liaison implements IVisitable{
 	public Classe getFrom(){
 		return f;
 	}
-	public static Liaison liaisonFactory(Class<?> f, Class<?> t, Classe from, Classe to){
+	public static Liaison liaisonFactory(Classe from, Classe to){
 
 		Liaison aRet;
 		
-		if(f.isInterface() && t.isInterface()){
-			
+		if(from.getClasse().isInterface() && to.getClasse().isInterface()){
 			aRet = new Heritage(from,to);
 		}
 
 		else {
-			if(t.isInterface() && !f.isInterface()){
+			if(to.getClasse().isInterface() && !from.getClasse().isInterface()){
 
 				//if(Modifier.isAbstract(f.getModifiers())){
-					Interface tO= new Interface(t);
+					Interface tO= new Interface(to.getClasse());
 					tO.setX1(to.getX1());
 					tO.setY1(to.getY1());
 					
@@ -53,7 +52,7 @@ public abstract class Liaison implements IVisitable{
 				}*/
 			}
 			else {
-				if(f.getSuperclass().equals(t)){
+				if(from.getClasse().getSuperclass()==to.getClasse()){
 					
 					aRet = new Heritage(from,to);
 				}
