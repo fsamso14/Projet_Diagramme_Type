@@ -20,7 +20,7 @@ Les liaisons qui existent entre les différentes classes ou interfaces sont repr
 2)La classe utile à la création d'un document SVG est la classe Main. La classe est commentée, ainsi l'utilisateur n'a plus quà suivre les consignes. De plus, des instances déjà en places servent d'exemple à l'utilisateur quant à la nomenclature à utiliser afin de générer le diagramme type voulu. 
 
 # Interprétation
-Le diagramme s'affiche au format texte dans la console. L'utilisateur devra le copier puis le coller dans un fichier .svg qui s'ouvrira dans le navigateur pas défaut de l'utilisateur.
+Le diagramme s'affiche au format texte dans la console, sous la forme d'un script XML. L'utilisateur devra le copier puis le coller dans un fichier .svg qui s'ouvrira dans le navigateur pas défaut de l'utilisateur.
 
 # Bugs de représentation
 
